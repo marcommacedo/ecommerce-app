@@ -1,0 +1,23 @@
+# dotnet
+bin/
+obj/
+*.user
+*.suo
+*.swp
+
+# node / next
+node_modules/
+.next/
+out/
+npm-debug.log*
+pnpm-lock.yaml
+yarn.lock
+
+# docker
+.data
+**/.docker/
+.env
+
+# os
+.DS_Store
+Thumbs.db
