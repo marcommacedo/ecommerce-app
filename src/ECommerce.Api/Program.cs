@@ -24,6 +24,8 @@ builder.Services.AddDbContext<ECommerceDbContext>(options =>
 builder.Services.AddSingleton<IConnectionMultiplexer>(
     _ => ConnectionMultiplexer.Connect(builder.Configuration.GetSection("Redis")["Configuration"]!));
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,6 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapHealthChecks("/health");
 
 app.MapControllers();
 app.UseHttpsRedirection();
